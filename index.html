@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Love ??</title>
+    <title>For My Love ❤️</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -107,26 +107,16 @@
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
         }
         
-        .heart {
+        .uruj-text {
             color: var(--dark-red);
-            animation: heartbeat 1.5s infinite;
-            position: relative;
-        }
-        
-        .heart::after {
-            content: "Uruj";
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 0.4em;
-            color: white;
             font-weight: bold;
+            animation: heartbeat 1.5s infinite;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
         }
         
         @keyframes heartbeat {
             0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+            50% { transform: scale(1.05); }
             100% { transform: scale(1); }
         }
         
@@ -164,53 +154,28 @@
             box-shadow: 0 6px 20px rgba(139, 0, 0, 0.4);
         }
         
-        .heart-animation {
+        .uruj-animation {
             width: 120px;
             height: 120px;
             margin: 20px auto;
             position: relative;
             cursor: pointer;
-        }
-        
-        .heart-shape {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: var(--dark-red);
-            transform: rotate(45deg);
-            animation: pulse 2s infinite;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-size: 0.9rem;
-        }
-        
-        .heart-shape:before,
-        .heart-shape:after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
             background: var(--dark-red);
             border-radius: 50%;
-        }
-        
-        .heart-shape:before {
-            top: -50%;
-            left: 0;
-        }
-        
-        .heart-shape:after {
-            top: 0;
-            left: -50%;
+            animation: pulse 2s infinite;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(139, 0, 0, 0.3);
         }
         
         @keyframes pulse {
-            0% { transform: rotate(45deg) scale(1); }
-            50% { transform: rotate(45deg) scale(1.1); }
-            100% { transform: rotate(45deg) scale(1); }
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
         }
         
         .feelings-container {
@@ -286,9 +251,10 @@
             font-style: italic;
         }
         
-        .letter-heart {
+        .letter-uruj {
             color: var(--dark-red);
-            margin: 0 5px;
+            font-weight: bold;
+            margin: 0 2px;
         }
         
         .letter-footer {
@@ -325,7 +291,7 @@
             transform: scale(1.2);
         }
         
-        .floating-hearts {
+        .floating-uruj {
             position: fixed;
             top: 0;
             left: 0;
@@ -335,10 +301,11 @@
             z-index: -1;
         }
         
-        .heart-float {
+        .uruj-float {
             position: absolute;
-            color: rgba(139, 0, 0, 0.5);
-            font-size: 20px;
+            color: rgba(139, 0, 0, 0.3);
+            font-size: 16px;
+            font-weight: bold;
             animation: float 8s linear infinite;
         }
         
@@ -368,23 +335,24 @@
                 padding: 20px 15px;
             }
             
-            .heart-animation {
+            .uruj-animation {
                 width: 100px;
                 height: 100px;
+                font-size: 1rem;
             }
             
             .letter-salutation {
                 font-size: 1.1rem;
             }
             
-            .heart-shape {
-                font-size: 0.7rem;
+            .uruj-float {
+                font-size: 14px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="floating-hearts" id="hearts-container"></div>
+    <div class="floating-uruj" id="uruj-container"></div>
     
     <div class="page-indicator" id="page-indicator">
         <div class="indicator-dot active" data-page="0"></div>
@@ -398,23 +366,23 @@
             <div class="page-content">
                 <header>
                     <div class="time-display" id="time-display">Today 9:47 PM</div>
-                    <h1>For My <span class="heart">?</span> Sweetest Uruj</h1>
+                    <h1>For My <span class="uruj-text">URUJ</span> Sweetest Love</h1>
                 </header>
                 
                 <h2>A Note for You</h2>
-                <p><strong>Hey My Love Uruj!</strong></p>
+                <p><strong>Hey My Love <span class="uruj-text">URUJ</span>!</strong></p>
                 <p>I wanted to do something special for you, so I made something special just for you...</p>
                 
-                <div class="heart-animation" id="openHeartBtn">
-                    <div class="heart-shape">Uruj</div>
+                <div class="uruj-animation" id="openHeartBtn">
+                    URUJ
                 </div>
                 
-                <p>Click the heart to open my feelings</p>
+                <p>Click the <span class="uruj-text">URUJ</span> to open my feelings</p>
                 
-                <button class="btn" id="openHeartBtn2">Open My Heart <span class="heart">?</span></button>
+                <button class="btn" id="openHeartBtn2">Open My Heart <span class="uruj-text">URUJ</span></button>
                 
                 <p style="margin-top: 20px; text-align: right; font-style: italic;">
-                    Made with love, only for you <span class="heart">?</span>
+                    Made with love, only for you <span class="uruj-text">URUJ</span>
                 </p>
             </div>
         </section>
@@ -422,33 +390,33 @@
         <!-- Feelings Page -->
         <section class="page feelings-page" id="page-1">
             <div class="page-content">
-                <h2>My Feelings For You <span class="heart">?</span></h2>
-                <p>These are just a few of the countless feelings I have for you Uruj...</p>
+                <h2>My Feelings For  <span class="uruj-text">URUJ</span></h2>
+                <p>These are just a few of the countless feelings I have for <span class="uruj-text">URUJ</span>...</p>
                 
                 <div class="feelings-container">
                     <div class="feeling-item">
-                        <div class="feeling-title"><span class="heart">?</span> Adoration</div>
-                        <div class="feeling-text">I adore everything about you Uruj - your smile, your laugh, the way your eyes light up when you're happy.</div>
+                        <div class="feeling-title"><span class="uruj-text">.</span> Adoration</div>
+                        <div class="feeling-text">I adore everything about you <span class="uruj-text">.</span> - your smile, your laugh, the way your eyes light up when you're happy.</div>
                     </div>
                     
                     <div class="feeling-item">
-                        <div class="feeling-title"><span class="heart">?</span> Wonder</div>
-                        <div class="feeling-text">Every day with you Uruj feels like discovering a new constellation in the night sky - beautiful and magical.</div>
+                        <div class="feeling-title"><span class="uruj-text">.</span> Wonder</div>
+                        <div class="feeling-text">Every day with you <span class="uruj-text">URUJ</span> feels like discovering a new constellation in the night sky - beautiful and magical.</div>
                     </div>
                     
                     <div class="feeling-item">
-                        <div class="feeling-title"><span class="heart">?</span> Home</div>
-                        <div class="feeling-text">With you Uruj, I've found my home. Not a place, but a feeling of belonging and complete acceptance.</div>
+                        <div class="feeling-title"><span class="uruj-text">URUJ</span> Home</div>
+                        <div class="feeling-text">With you <span class="uruj-text">URUJ</span>, I've found my home. Not a place, but a feeling of belonging and complete acceptance.</div>
                     </div>
                     
                     <div class="feeling-item">
-                        <div class="feeling-title"><span class="heart">?</span> Inspiration</div>
-                        <div class="feeling-text">You inspire me to be better, to dream bigger, and to love deeper than I ever thought possible, Uruj.</div>
+                        <div class="feeling-title"><span class="uruj-text">.</span> Inspiration</div>
+                        <div class="feeling-text">You inspire me to be better, to dream bigger, and to love deeper than I ever thought possible, <span class="uruj-text">URUJ</span>.</div>
                     </div>
                 </div>
                 
                 <p style="margin-top: 15px; font-style: italic;">
-                    And these are just the beginning... My love for you grows with every passing moment, Uruj <span class="heart">?</span>
+                    And these are just the beginning... My love for you grows with every passing moment, <span class="uruj-text">URUJ</span>
                 </p>
             </div>
         </section>
@@ -459,32 +427,32 @@
                 <div class="love-letter">
                     <div class="letter-header">
                         <div class="letter-date" id="letter-date">Today, 9:47 PM</div>
-                        <h2>A Love Letter For Uruj <span class="heart">?</span></h2>
+                        <h2>A Love Letter For <span class="uruj-text">URUJ</span></h2>
                     </div>
                     
                     <div class="letter-salutation">
-                        My Dearest Uruj <span class="heart">?</span>,
+                        My Dearest <span class="uruj-text">URUJ</span>,
                     </div>
                     
                     <div class="letter-body">
                         <div class="letter-paragraph">
-                            As I sit down to write these words, my heart overflows with emotions that are both beautiful and overwhelming. Every moment with you feels like a precious gift, and I find myself constantly grateful for your presence in my life, Uruj.
+                            As I sit down to write these words, my heart overflows with emotions that are both beautiful and overwhelming. Every moment with you feels like a precious gift, and I find myself constantly grateful for your presence in my life, <span class="uruj-text">URUJ</span>.
                         </div>
                         
                         <div class="letter-paragraph">
-                            From the very first day we met, something magical happened. You brought colors to my world that I never knew existed. Your smile became my favorite sunrise, your laughter my most cherished melody, and your love the anchor that keeps me grounded yet lets me soar, Uruj.
+                            From the very first day we met, something magical happened. You brought colors to my world that I never knew existed. Your smile became my favorite sunrise, your laughter my most cherished melody, and your love the anchor that keeps me grounded yet lets me soar, <span class="uruj-text">URUJ</span>.
                         </div>
                         
                         <div class="letter-paragraph">
-                            I love the little things about you Uruj - the way your eyes sparkle when you talk about something you're passionate about, the sound of your voice when you first wake up, the gentle way you care for others, and the incredible strength you show even when you don't realize it.
+                            I love the little things about you <span class="uruj-text">URUJ</span> - the way your eyes sparkle when you talk about something you're passionate about, the sound of your voice when you first wake up, the gentle way you care for others, and the incredible strength you show even when you don't realize it.
                         </div>
                         
                         <div class="letter-paragraph">
-                            With you Uruj, I've discovered parts of myself I never knew existed. You inspire me to be better, to dream bigger, and to love more deeply. You've shown me what true partnership means - supporting each other's dreams, celebrating each other's victories, and holding each other through challenges.
+                            With you <span class="uruj-text">URUJ</span>, I've discovered parts of myself I never knew existed. You inspire me to be better, to dream bigger, and to love more deeply. You've shown me what true partnership means - supporting each other's dreams, celebrating each other's victories, and holding each other through challenges.
                         </div>
                         
                         <div class="letter-paragraph">
-                            I promise to always cherish you Uruj, to respect you, to support your dreams as if they were my own, and to love you more with each passing day. I promise to be your safe place, your biggest fan, and your partner in every adventure life brings our way.
+                            I promise to always cherish you <span class="uruj-text">URUJ</span>, to respect you, to support your dreams as if they were my own, and to love you more with each passing day. I promise to be your safe place, your biggest fan, and your partner in every adventure life brings our way.
                         </div>
                     </div>
                     
@@ -492,14 +460,14 @@
                         <div>With all my love,</div>
                         <div style="font-weight: bold; margin-top: 5px;">Your Jaan Faaik</div>
                         <div style="margin-top: 10px;">
-                            <span class="heart">?</span>
-                            <span class="heart">?</span>
-                            <span class="heart">?</span>
+                            <span class="uruj-text">I love you forever</span>
+                            <span class="uruj-text"> and ever</span>
+                            <span class="uruj-text">and ever baccha </span>
                         </div>
                     </div>
                     
                     <div class="letter-footer">
-                        This letter was written from the deepest corners of my heart, just for you Uruj <span class="heart">?</span>.
+                        This letter was written from the deepest corners of my heart, just for you <span class="uruj-text">URUJ</span>.
                     </div>
                 </div>
             </div>
@@ -507,20 +475,20 @@
     </div>
 
     <script>
-        // Create floating hearts
-        function createHearts() {
-            const container = document.getElementById('hearts-container');
-            const heartCount = 15;
+        // Create floating URUJ text
+        function createFloatingUruj() {
+            const container = document.getElementById('uruj-container');
+            const urujCount = 12;
             
-            for (let i = 0; i < heartCount; i++) {
-                const heart = document.createElement('div');
-                heart.classList.add('heart-float');
-                heart.innerHTML = '?';
-                heart.style.left = Math.random() * 100 + 'vw';
-                heart.style.animationDuration = (Math.random() * 10 + 5) + 's';
-                heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
-                heart.style.opacity = Math.random() * 0.7 + 0.3;
-                container.appendChild(heart);
+            for (let i = 0; i < urujCount; i++) {
+                const uruj = document.createElement('div');
+                uruj.classList.add('uruj-float');
+                uruj.innerHTML = 'URUJ';
+                uruj.style.left = Math.random() * 100 + 'vw';
+                uruj.style.animationDuration = (Math.random() * 10 + 5) + 's';
+                uruj.style.fontSize = (Math.random() * 12 + 10) + 'px';
+                uruj.style.opacity = Math.random() * 0.4 + 0.2;
+                container.appendChild(uruj);
             }
         }
         
@@ -554,7 +522,7 @@
             });
         });
         
-        // Open Heart buttons - both the animated heart and the button
+        // Open Heart buttons - both the animated URUJ and the button
         document.getElementById('openHeartBtn').addEventListener('click', function() {
             showPage(1);
         });
@@ -573,7 +541,7 @@
         }
         
         // Initialize
-        createHearts();
+        createFloatingUruj();
         updateTime();
         setInterval(updateTime, 60000); // Update time every minute
         showPage(0); // Show first page
