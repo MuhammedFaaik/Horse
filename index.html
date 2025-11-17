@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Love ??</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #ff4d6d;
+            --secondary: #ff8fa3;
+            --accent: #ffb3c1;
+            --dark: #590d22;
+            --light: #fff0f3;
+            --dark-red: #8b0000;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #ffccd5, #ffb3c6);
+            color: var(--dark);
+            min-height: 100vh;
+            overflow: hidden;
+            padding: 0;
+        }
+        
+        .container {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+            opacity: 0;
+            transform: translateX(100%);
+        }
+        
+        .page.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .page.prev {
+            transform: translateX(-100%);
+        }
+        
+        .page-content {
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .note-page .page-content {
+            background: linear-gradient(135deg, #fff0f3, #ffccd5);
+            border: 2px dashed var(--primary);
+        }
+        
+        .feelings-page .page-content {
+            background: linear-gradient(135deg, #ffccd5, #ffb3c6);
+        }
+        
+        .letter-page .page-content {
+            background: #fffafb;
+            position: relative;
+            padding: 30px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .time-display {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .heart {
+            color: var(--dark-red);
+            animation: heartbeat 1.5s infinite;
+            position: relative;
+        }
+        
+        .heart::after {
+            content: "Uruj";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 0.4em;
+            color: white;
+            font-weight: bold;
+        }
+        
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--dark-red);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(139, 0, 0, 0.3);
+            width: 100%;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background-color: var(--dark);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(139, 0, 0, 0.4);
+        }
+        
+        .heart-animation {
+            width: 120px;
+            height: 120px;
+            margin: 20px auto;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .heart-shape {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: var(--dark-red);
+            transform: rotate(45deg);
+            animation: pulse 2s infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        .heart-shape:before,
+        .heart-shape:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: var(--dark-red);
+            border-radius: 50%;
+        }
+        
+        .heart-shape:before {
+            top: -50%;
+            left: 0;
+        }
+        
+        .heart-shape:after {
+            top: 0;
+            left: -50%;
+        }
+        
+        @keyframes pulse {
+            0% { transform: rotate(45deg) scale(1); }
+            50% { transform: rotate(45deg) scale(1.1); }
+            100% { transform: rotate(45deg) scale(1); }
+        }
+        
+        .feelings-container {
+            margin: 20px 0;
+        }
+        
+        .feeling-item {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            text-align: left;
+            transition: all 0.3s;
+        }
+        
+        .feeling-item:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateX(10px);
+        }
+        
+        .feeling-title {
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+        
+        .feeling-text {
+            font-style: italic;
+            color: var(--dark);
+        }
+        
+        /* Love Letter Styles */
+        .love-letter {
+            text-align: left;
+            line-height: 1.8;
+            font-family: 'Georgia', serif;
+            color: #333;
+        }
+        
+        .letter-header {
+            text-align: center;
+            margin-bottom: 25px;
+            border-bottom: 2px solid var(--dark-red);
+            padding-bottom: 15px;
+        }
+        
+        .letter-date {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        
+        .letter-salutation {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        .letter-body {
+            margin-bottom: 25px;
+        }
+        
+        .letter-paragraph {
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+        
+        .letter-signature {
+            text-align: right;
+            margin-top: 30px;
+            font-style: italic;
+        }
+        
+        .letter-heart {
+            color: var(--dark-red);
+            margin: 0 5px;
+        }
+        
+        .letter-footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 1px solid #ddd;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .page-indicator {
+            position: fixed;
+            top: 20px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            z-index: 100;
+        }
+        
+        .indicator-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .indicator-dot.active {
+            background: var(--dark-red);
+            transform: scale(1.2);
+        }
+        
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .heart-float {
+            position: absolute;
+            color: rgba(139, 0, 0, 0.5);
+            font-size: 20px;
+            animation: float 8s linear infinite;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            .page-content {
+                padding: 20px 15px;
+            }
+            
+            .heart-animation {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .letter-salutation {
+                font-size: 1.1rem;
+            }
+            
+            .heart-shape {
+                font-size: 0.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-hearts" id="hearts-container"></div>
+    
+    <div class="page-indicator" id="page-indicator">
+        <div class="indicator-dot active" data-page="0"></div>
+        <div class="indicator-dot" data-page="1"></div>
+        <div class="indicator-dot" data-page="2"></div>
+    </div>
+    
+    <div class="container">
+        <!-- Note Page -->
+        <section class="page note-page active" id="page-0">
+            <div class="page-content">
+                <header>
+                    <div class="time-display" id="time-display">Today 9:47 PM</div>
+                    <h1>For My <span class="heart">?</span> Sweetest Uruj</h1>
+                </header>
+                
+                <h2>A Note for You</h2>
+                <p><strong>Hey My Love Uruj!</strong></p>
+                <p>I wanted to do something special for you, so I made something special just for you...</p>
+                
+                <div class="heart-animation" id="openHeartBtn">
+                    <div class="heart-shape">Uruj</div>
+                </div>
+                
+                <p>Click the heart to open my feelings</p>
+                
+                <button class="btn" id="openHeartBtn2">Open My Heart <span class="heart">?</span></button>
+                
+                <p style="margin-top: 20px; text-align: right; font-style: italic;">
+                    Made with love, only for you <span class="heart">?</span>
+                </p>
+            </div>
+        </section>
+        
+        <!-- Feelings Page -->
+        <section class="page feelings-page" id="page-1">
+            <div class="page-content">
+                <h2>My Feelings For You <span class="heart">?</span></h2>
+                <p>These are just a few of the countless feelings I have for you Uruj...</p>
+                
+                <div class="feelings-container">
+                    <div class="feeling-item">
+                        <div class="feeling-title"><span class="heart">?</span> Adoration</div>
+                        <div class="feeling-text">I adore everything about you Uruj - your smile, your laugh, the way your eyes light up when you're happy.</div>
+                    </div>
+                    
+                    <div class="feeling-item">
+                        <div class="feeling-title"><span class="heart">?</span> Wonder</div>
+                        <div class="feeling-text">Every day with you Uruj feels like discovering a new constellation in the night sky - beautiful and magical.</div>
+                    </div>
+                    
+                    <div class="feeling-item">
+                        <div class="feeling-title"><span class="heart">?</span> Home</div>
+                        <div class="feeling-text">With you Uruj, I've found my home. Not a place, but a feeling of belonging and complete acceptance.</div>
+                    </div>
+                    
+                    <div class="feeling-item">
+                        <div class="feeling-title"><span class="heart">?</span> Inspiration</div>
+                        <div class="feeling-text">You inspire me to be better, to dream bigger, and to love deeper than I ever thought possible, Uruj.</div>
+                    </div>
+                </div>
+                
+                <p style="margin-top: 15px; font-style: italic;">
+                    And these are just the beginning... My love for you grows with every passing moment, Uruj <span class="heart">?</span>
+                </p>
+            </div>
+        </section>
+        
+        <!-- Love Letter Page -->
+        <section class="page letter-page" id="page-2">
+            <div class="page-content">
+                <div class="love-letter">
+                    <div class="letter-header">
+                        <div class="letter-date" id="letter-date">Today, 9:47 PM</div>
+                        <h2>A Love Letter For Uruj <span class="heart">?</span></h2>
+                    </div>
+                    
+                    <div class="letter-salutation">
+                        My Dearest Uruj <span class="heart">?</span>,
+                    </div>
+                    
+                    <div class="letter-body">
+                        <div class="letter-paragraph">
+                            As I sit down to write these words, my heart overflows with emotions that are both beautiful and overwhelming. Every moment with you feels like a precious gift, and I find myself constantly grateful for your presence in my life, Uruj.
+                        </div>
+                        
+                        <div class="letter-paragraph">
+                            From the very first day we met, something magical happened. You brought colors to my world that I never knew existed. Your smile became my favorite sunrise, your laughter my most cherished melody, and your love the anchor that keeps me grounded yet lets me soar, Uruj.
+                        </div>
+                        
+                        <div class="letter-paragraph">
+                            I love the little things about you Uruj - the way your eyes sparkle when you talk about something you're passionate about, the sound of your voice when you first wake up, the gentle way you care for others, and the incredible strength you show even when you don't realize it.
+                        </div>
+                        
+                        <div class="letter-paragraph">
+                            With you Uruj, I've discovered parts of myself I never knew existed. You inspire me to be better, to dream bigger, and to love more deeply. You've shown me what true partnership means - supporting each other's dreams, celebrating each other's victories, and holding each other through challenges.
+                        </div>
+                        
+                        <div class="letter-paragraph">
+                            I promise to always cherish you Uruj, to respect you, to support your dreams as if they were my own, and to love you more with each passing day. I promise to be your safe place, your biggest fan, and your partner in every adventure life brings our way.
+                        </div>
+                    </div>
+                    
+                    <div class="letter-signature">
+                        <div>With all my love,</div>
+                        <div style="font-weight: bold; margin-top: 5px;">Your Jaan Faaik</div>
+                        <div style="margin-top: 10px;">
+                            <span class="heart">?</span>
+                            <span class="heart">?</span>
+                            <span class="heart">?</span>
+                        </div>
+                    </div>
+                    
+                    <div class="letter-footer">
+                        This letter was written from the deepest corners of my heart, just for you Uruj <span class="heart">?</span>.
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Create floating hearts
+        function createHearts() {
+            const container = document.getElementById('hearts-container');
+            const heartCount = 15;
+            
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart-float');
+                heart.innerHTML = '?';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (Math.random() * 10 + 5) + 's';
+                heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+                heart.style.opacity = Math.random() * 0.7 + 0.3;
+                container.appendChild(heart);
+            }
+        }
+        
+        // Page navigation
+        const pages = document.querySelectorAll('.page');
+        const dots = document.querySelectorAll('.indicator-dot');
+        let currentPage = 0;
+        
+        function showPage(index) {
+            // Hide all pages
+            pages.forEach(page => {
+                page.classList.remove('active', 'prev');
+            });
+            
+            dots.forEach(dot => {
+                dot.classList.remove('active');
+            });
+            
+            // Show current page
+            pages[index].classList.add('active');
+            dots[index].classList.add('active');
+            
+            currentPage = index;
+        }
+        
+        // Dot navigation
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const pageIndex = parseInt(dot.getAttribute('data-page'));
+                showPage(pageIndex);
+            });
+        });
+        
+        // Open Heart buttons - both the animated heart and the button
+        document.getElementById('openHeartBtn').addEventListener('click', function() {
+            showPage(1);
+        });
+        
+        document.getElementById('openHeartBtn2').addEventListener('click', function() {
+            showPage(1);
+        });
+        
+        // Update time display
+        function updateTime() {
+            const now = new Date();
+            const options = { hour: 'numeric', minute: 'numeric', hour12: true };
+            const timeString = now.toLocaleTimeString('en-US', options);
+            document.getElementById('time-display').textContent = `Today ${timeString}`;
+            document.getElementById('letter-date').textContent = `Today, ${timeString}`;
+        }
+        
+        // Initialize
+        createHearts();
+        updateTime();
+        setInterval(updateTime, 60000); // Update time every minute
+        showPage(0); // Show first page
+    </script>
+</body>
+</html>
